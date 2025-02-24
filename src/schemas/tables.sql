@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS activity(
     description TEXT NOT NULL,
     user_id INT NOT NULL REFERENCES users (id),
     subcategory_id INT REFERENCES subcategories (id),
-    to_share BOOLEAN NOT NULL DEFAULT FALSE,
     bank_id INT NOT NULL REFERENCES banks (id),
+    shared_amount INT NOT NULL DEFAULT 0,
     amount decimal(12, 2) NOT NULL
 );
 
@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS temporary_activity(
     description TEXT NOT NULL,
     user_id INT NOT NULL REFERENCES users (id),
     subcategory_id INT REFERENCES subcategories (id),
-    to_share BOOLEAN NOT NULL DEFAULT FALSE,
     bank_id INT NOT NULL REFERENCES banks (id),
+    shared_amount INT NOT NULL DEFAULT 0,
     amount decimal(12, 2) NOT NULL
 );
 
