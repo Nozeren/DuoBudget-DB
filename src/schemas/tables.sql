@@ -20,25 +20,25 @@ CREATE TABLE IF NOT EXISTS subcategories(
     category_id INT NOT NULL REFERENCES categories (id)
 );
 
-CREATE TABLE IF NOT EXISTS activity(
+CREATE TABLE IF NOT EXISTS transactions(
     id SERIAL PRIMARY KEY,
     posted_date DATE NOT NULL,
     description TEXT NOT NULL,
     user_id INT NOT NULL REFERENCES users (id),
     subcategory_id INT REFERENCES subcategories (id),
     bank_id INT NOT NULL REFERENCES banks (id),
-    shared_amount INT NOT NULL DEFAULT 0,
+    shared_amount decimal(12, 2) NOT NULL DEFAULT 0,
     amount decimal(12, 2) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS temporary_activity(
+CREATE TABLE IF NOT EXISTS temporary_transactions(
     id SERIAL PRIMARY KEY,
     posted_date DATE NOT NULL,
     description TEXT NOT NULL,
     user_id INT NOT NULL REFERENCES users (id),
     subcategory_id INT REFERENCES subcategories (id),
     bank_id INT NOT NULL REFERENCES banks (id),
-    shared_amount INT NOT NULL DEFAULT 0,
+    shared_amount decimal(12, 2) NULL DEFAULT 0,
     amount decimal(12, 2) NOT NULL
 );
 
