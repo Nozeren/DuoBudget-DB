@@ -2,7 +2,6 @@ import asyncpg
 import dotenv
 import logging
 import os
-from src.queries.banks import Banks
 from src.queries.categories import Categories 
 from src.queries.subcategories import Subcategories 
 
@@ -46,6 +45,5 @@ async def create_tables(pool: asyncpg.Pool) -> None:
     logging.info('Tables Creation: SUCCESSFUL')
 
 async def load_initial_data(pool: asyncpg.Pool) -> None:
-    await Banks(pool=pool).load_initial_data()
     await Categories(pool=pool).load_initial_data()
     await Subcategories(pool=pool).load_initial_data()
