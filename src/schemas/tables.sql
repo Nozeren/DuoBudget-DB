@@ -49,6 +49,8 @@ CREATE TABLE IF NOT EXISTS budget(
     month INT NOT NULL,
     year INT NOT NULL,
     user_id INT NOT NULL REFERENCES users (id),
-    category_id INT NOT NULL REFERENCES categories (id),
-    percentage INT NOT NULL
+    subcategory_id INT REFERENCES subcategories (id),
+    assigned decimal(12, 2) NOT NULL DEFAULT 0,
+    activity decimal(12, 2) NOT NULL DEFAULT 0,
+    available decimal(12, 2) NOT NULL DEFAULT 0
 );
