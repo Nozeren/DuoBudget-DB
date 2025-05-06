@@ -2,7 +2,7 @@ from src.queries.base import BaseQuery
 import pandas as pd
 import asyncpg
 
-INITIAL_DATA =  {"name": ["House", "Family", "Transport", "Extra", "Income"]} 
+INITIAL_DATA =  {"name": ["House", "Family", "Transport", "Extra", "Income", "Savings"], "type": ["debit", "debit", "debit", "debit", "income", "savings"]} 
 
 class Categories(BaseQuery):
     def __init__(self, pool):

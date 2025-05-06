@@ -4,6 +4,7 @@ import logging
 import os
 from src.queries.categories import Categories 
 from src.queries.subcategories import Subcategories 
+from src.queries.accounts_type import Accounts_Type 
 
 logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
 
@@ -47,3 +48,4 @@ async def create_tables(pool: asyncpg.Pool) -> None:
 async def load_initial_data(pool: asyncpg.Pool) -> None:
     await Categories(pool=pool).load_initial_data()
     await Subcategories(pool=pool).load_initial_data()
+    await Accounts_Type(pool=pool).load_initial_data()

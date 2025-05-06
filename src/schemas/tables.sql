@@ -11,9 +11,25 @@ CREATE TABLE IF NOT EXISTS users(
     color TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS accounts_type(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    in_budget BOOLEAN NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS accounts(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    type_id INT NOT NULL REFERENCES accounts_type (id),
+    bank_id INT NOT NULL REFERENCES banks (id),
+    user_id INT NOT NULL REFERENCES users (id),
+    balance decimal(12, 2) not NULL DEFAULT 0
+);
+
 CREATE TABLE IF NOT EXISTS categories(
     id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE
+    name TEXT NOT NULL UNIQUE,
+    type TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS subcategories(
@@ -28,7 +44,7 @@ CREATE TABLE IF NOT EXISTS transactions(
     description TEXT NOT NULL,
     user_id INT NOT NULL REFERENCES users (id),
     subcategory_id INT REFERENCES subcategories (id),
-    bank_id INT NOT NULL REFERENCES banks (id),
+    account_id INT NOT NULL REFERENCES accounts (id),
     shared_amount decimal(12, 2) NOT NULL DEFAULT 0,
     amount decimal(12, 2) NOT NULL
 );
@@ -39,7 +55,7 @@ CREATE TABLE IF NOT EXISTS temporary_transactions(
     description TEXT NOT NULL,
     user_id INT NOT NULL REFERENCES users (id),
     subcategory_id INT REFERENCES subcategories (id),
-    bank_id INT NOT NULL REFERENCES banks (id),
+    account_id INT NOT NULL REFERENCES accounts (id),
     shared_amount decimal(12, 2) NULL DEFAULT 0,
     amount decimal(12, 2) NOT NULL
 );

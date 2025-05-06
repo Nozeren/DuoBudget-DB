@@ -31,8 +31,10 @@ INITIAL_DATA = {"House": [
 ],
     "Income": [
     "Salary",
+],
+    "Savings":[
     "Savings"
-]
+    ]
 }
 
 
