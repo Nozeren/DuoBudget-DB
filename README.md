@@ -23,7 +23,8 @@ Install Requirements:
 
 # Execution
 Create enviroment variables for Posgresql credentials
-```PSQL_USER
+```
+PSQL_USER
 PSQL_PASSWORD
 PSQL_HOST
 PSQL_PORT 
