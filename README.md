@@ -3,6 +3,11 @@ Automatically Generate Database and populates with initial data for the [DuoBudg
 
 # Requirements
 PostgreSQL connection or installed on your local machine.
+### Postgresql & PGAdmin4 with docker-compose
+Change credentials on docker-compose.yml and run the command bellow
+`docker-compose up -d`
+Open pgadming http://localhost:8888/browser/
+Add server with db credentials
 
 # Install
 Create virtual environment:
